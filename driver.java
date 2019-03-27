@@ -14,6 +14,10 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import java.util.Random;
+import javafx.animation.Animation;
+import javafx.animation.*;
+import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
 public class driver extends Application {
    private Button key, restart, X, O;
@@ -277,6 +281,7 @@ public class driver extends Application {
             {
                message.setText("Team " + P1 + " wins!");
                isWinner = true; 
+               
                for (int i = 0; i < 3; i++)
                {
                   for (int j = 0; j < 3; j++)
@@ -293,9 +298,14 @@ public class driver extends Application {
                      keyArray[i][j].setStyle("-fx-background-color: #A05BF2");
                      else 
                      keyArray[i][j].setStyle("-fx-background-color: #E355E3");
+
+                     RotateTransition rT = new RotateTransition(Duration.seconds(1.5), keyArray[i][j]);
+                     rT.setFromAngle(0);
+                     rT.setToAngle(360);
+                     rT.setCycleCount(3);
+                     rT.play();
                   }
                }
-               
             }
          
       else if ((keyArray[0][0].getText() == P2 && keyArray[1][0].getText() == P2 && keyArray[2][0].getText() == P2) ||
@@ -326,6 +336,12 @@ public class driver extends Application {
                         keyArray[i][j].setStyle("-fx-background-color: #E5574C");
                         else 
                         keyArray[i][j].setStyle("-fx-background-color: #F7F96A");
+
+                        RotateTransition rT = new RotateTransition(Duration.seconds(1.5), keyArray[i][j]);
+                        rT.setFromAngle(0);
+                        rT.setToAngle(360);
+                        rT.setCycleCount(3);
+                        rT.play();
                      }
                   }
                }
